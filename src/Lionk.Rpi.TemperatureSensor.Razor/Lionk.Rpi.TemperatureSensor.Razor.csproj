@@ -32,10 +32,6 @@
     <_ContentIncludedByDefault Remove="Components\ConfigurationPages\ManualTemperatureSensorWidget.razor" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="Components\ManualTemperatureSensorWidget.razor" />
-  </ItemGroup>
-
 
 
 </Project>

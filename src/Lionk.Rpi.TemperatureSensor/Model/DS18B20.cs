@@ -1,5 +1,6 @@
 ﻿// Copyright © 2024 Lionk Project
 
+using Lionk.Components.Temperature;
 using Lionk.Core;
 using Lionk.Core.DataModel;
 using Lionk.Log;
@@ -100,33 +101,6 @@ public class DS18B20 : BaseTemperatureSensor
         string tempData = lines[1].Split('=')[1];
         SetTemperature(Convert.ToDouble(tempData) / 1000.0);
         IsInterfered = false;
-    }
-
-    /// <summary>
-    /// This method is used to set the temperature of the sensor.
-    /// </summary>
-    /// <param name="value"> The value of the temperature.</param>
-    public void SetTemperature(double value)
-    {
-        double celsius = value;
-        double fahrenheit = (value * 9.0 / 5.0) + 32.0;
-        double kelvin = value + 273.15;
-
-        Measures[(int)TemperatureType.Celsius] = new Measure<double>(
-            "Temperature",
-            DateTime.UtcNow,
-            TemperatureType.Celsius.GetUnit(),
-            celsius);
-        Measures[(int)TemperatureType.Fahrenheit] = new Measure<double>(
-            "Temperature",
-            DateTime.UtcNow,
-            TemperatureType.Fahrenheit.GetUnit(),
-            fahrenheit);
-        Measures[(int)TemperatureType.Kelvin] = new Measure<double>(
-            "Temperature",
-            DateTime.UtcNow,
-            TemperatureType.Kelvin.GetUnit(),
-            kelvin);
     }
 
     /// <summary>
